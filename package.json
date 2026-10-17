@@ -1,0 +1,19 @@
+{
+  "name": "charcha",
+  "version": "1.0.0",
+  "description": "Turn any document into a two-host podcast in your Indian language, and interrupt the hosts with voice questions. Built on Sarvam AI.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js"
+  },
+  "engines": {
+    "node": ">=20.12"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.3.0",
+    "multer": "^2.4.0"
+  }
+}

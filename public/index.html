@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charcha · any document, a podcast in your language</title>
+  <meta name="description" content="Turn any document, photo, link or topic into a two-host podcast in your Indian language, and interrupt the hosts with questions in any language. Built on Sarvam AI.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e2622b'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='sans-serif'%3E%E0%A4%9A%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4.2" height="14" rx="1.2" fill="currentColor"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path fill="currentColor" d="M6 6h2v12H6zM9.5 12l8.5 6V6z"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path fill="currentColor" d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M18 11V6.5a1.5 1.5 0 0 0-3 0V11m0-1.5v-5a1.5 1.5 0 0 0-3 0v5m0-.5V5a1.5 1.5 0 0 0-3 0v7m0 0V9.5a1.5 1.5 0 0 0-3 0V14a7 7 0 0 0 7 7h1a6 6 0 0 0 6-6v-4a1.5 1.5 0 0 0-3 0"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Zm7 9a7 7 0 0 1-14 0m7 7v3"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h13M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 16V5m-5 5 5-5 5 5M5 20h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><path fill="currentColor" d="M4 9.5v5a1 1 0 0 0 1 1h3l4.4 3.6A1 1 0 0 0 14 18.3V5.7a1 1 0 0 0-1.6-.8L8 8.5H5a1 1 0 0 0-1 1Z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M17 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2.5v2m0 15v2M4.6 4.6l1.4 1.4m12 12 1.4 1.4M2.5 12h2m15 0h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">च</span>
+      <div>
+        <h1>Charcha <span class="deva">चर्चा</span></h1>
+        <p>Any document → a podcast in your language</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <a class="stack-pill" href="#stack"><span class="pulse-dot" aria-hidden="true"></span><b id="stackCount">0</b>/9 Sarvam models in play</a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle colour theme"><svg><use href="#i-moon"/></svg></button>
+    </div>
+  </header>
+
+  <div class="banner" id="keyBanner" hidden>No Sarvam API key found. Add <code>SARVAM_API_KEY=…</code> to <code>.env</code> and restart the server.</div>
+
+  <main class="studio">
+    <!-- ─────────────────────────────── COMPOSE ─────────────────────────────── -->
+    <section class="panel compose" aria-labelledby="composeTitle">
+      <h2 class="visually-hidden" id="composeTitle">Create an episode</h2>
+
+      <div class="step">
+        <div class="step-head"><span class="num">1</span><h3>What should they talk about?</h3></div>
+        <div class="tabs" role="tablist" aria-label="Source type">
+          <button role="tab" data-tab="upload" aria-selected="true">Upload</button>
+          <button role="tab" data-tab="paste" aria-selected="false">Paste</button>
+          <button role="tab" data-tab="link" aria-selected="false">Link</button>
+          <button role="tab" data-tab="topic" aria-selected="false">Topic</button>
+        </div>
+
+        <div class="tabpanel" data-panel="upload">
+          <label class="dropzone" id="dropzone">
+            <input type="file" id="fileInput" accept="application/pdf,image/png,image/jpeg" hidden>
+            <span class="dz-icon"><svg><use href="#i-upload"/></svg></span>
+            <span class="dz-title">Drop a PDF or a photo</span>
+            <span class="dz-sub">Textbook page, newspaper clipping, govt circular, notes — in any of 23 Indian languages. PDFs up to 10 pages.</span>
+          </label>
+          <div class="field-row">
+            <label for="docLang">Document language</label>
+            <select id="docLang"></select>
+          </div>
+        </div>
+
+        <div class="tabpanel" data-panel="paste" hidden>
+          <textarea id="pasteInput" rows="7" placeholder="Paste an article, notes, a chapter… in any language."></textarea>
+          <div class="paste-meta">
+            <span class="lang-chip" id="pasteLang" hidden></span>
+            <span class="samples">Try: <button class="link-btn" data-sample="upi">UPI explained</button><button class="link-btn" data-sample="chandrayaan">चंद्रयान-3</button><button class="link-btn" data-sample="kural">திருக்குறள்</button></span>
+          </div>
+        </div>
+
+        <div class="tabpanel" data-panel="link" hidden>
+          <form class="inline-form" id="linkForm">
+            <input type="url" id="linkInput" placeholder="https://… a news article or blog post" required>
+            <button class="btn" type="submit" id="linkBtn">Fetch</button>
+          </form>
+        </div>
+
+        <div class="tabpanel" data-panel="topic" hidden>
+          <div class="inline-form">
+            <input type="text" id="topicInput" placeholder="e.g. How does UPI actually work?" maxlength="300">
+            <button class="btn mic-btn" type="button" id="topicMic" aria-label="Say the topic"><svg><use href="#i-mic"/></svg><span>Say it</span></button>
+          </div>
+          <p class="hint">No document? Speak or type a topic in any language and the hosts will teach it from general knowledge.</p>
+        </div>
+
+        <div class="source-card" id="sourceCard" hidden>
+          <div class="source-main">
+            <div class="source-label" id="sourceLabel"></div>
+            <div class="source-meta" id="sourceMeta"></div>
+          </div>
+          <button class="icon-btn small" id="sourceClear" aria-label="Remove source"><svg><use href="#i-close"/></svg></button>
+          <details class="source-preview"><summary>Preview text</summary><pre id="sourcePreview"></pre></details>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="num">2</span><h3>Podcast language</h3></div>
+        <div class="chips" id="langChips" role="radiogroup" aria-label="Podcast language"></div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="num">3</span><h3>Format</h3></div>
+        <div class="styles" id="styleCards" role="radiogroup" aria-label="Format"></div>
+        <div class="segmented" id="lengthSeg" role="radiogroup" aria-label="Length"></div>
+      </div>
+
+      <div class="step">
+        <div class="step-head"><span class="num">4</span><h3>Your hosts</h3></div>
+        <div class="hosts-pick">
+          <div class="host-pick" data-host="0">
+            <span class="host-dot a"></span>
+            <div class="host-pick-body">
+              <span class="host-role" id="roleA"></span>
+              <div class="select-row">
+                <select id="hostA" aria-label="First host voice"></select>
+                <button class="icon-btn small" data-preview="0" aria-label="Preview first host voice"><svg><use href="#i-speaker"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="host-pick" data-host="1">
+            <span class="host-dot b"></span>
+            <div class="host-pick-body">
+              <span class="host-role" id="roleB"></span>
+              <div class="select-row">
+                <select id="hostB" aria-label="Second host voice"></select>
+                <button class="icon-btn small" data-preview="1" aria-label="Preview second host voice"><svg><use href="#i-speaker"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="cta" id="generateBtn"><svg><use href="#i-mic"/></svg><span>Start the Charcha</span></button>
+    </section>
+
+    <!-- ─────────────────────────────── ON AIR ─────────────────────────────── -->
+    <section class="panel onair" id="onair" aria-labelledby="onairTitle">
+      <h2 class="visually-hidden" id="onairTitle">Player</h2>
+
+      <div class="state-empty" id="stateEmpty">
+        <div class="mics" aria-hidden="true">
+          <span class="mic-bubble a">A</span>
+          <span class="wave"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="mic-bubble b">B</span>
+        </div>
+        <h3>Your episode will appear here</h3>
+        <p>Feed Charcha a PDF, a photo of a page, a link or just a topic. Two hosts will talk it through in your language. While it plays, <b>raise your hand</b> and ask anything, in any language.</p>
+        <ol class="how">
+          <li><b>Sarvam Vision</b> reads the page</li>
+          <li><b>Sarvam-105B</b> writes the conversation</li>
+          <li><b>Bulbul</b> voices the hosts</li>
+          <li><b>Saaras</b> hears your questions</li>
+        </ol>
+      </div>
+
+      <div class="state-working" id="stateWorking" hidden>
+        <ol class="stages" id="stages"></ol>
+      </div>
+
+      <div class="player" id="player" hidden>
+        <div class="ep-head">
+          <div class="ep-kicker" id="epKicker"></div>
+          <h3 class="ep-title" id="epTitle"></h3>
+          <p class="ep-summary" id="epSummary"></p>
+        </div>
+
+        <div class="stage">
+          <div class="host-avatar a" id="avatarA"><span class="ring"></span><span class="initial"></span><span class="name"></span></div>
+          <div class="controls">
+            <button class="icon-btn" id="prevBtn" aria-label="Previous line"><svg><use href="#i-prev"/></svg></button>
+            <button class="play-btn" id="playBtn" aria-label="Play"><svg class="ic-play"><use href="#i-play"/></svg><svg class="ic-pause"><use href="#i-pause"/></svg><span class="spinner"></span></button>
+            <button class="icon-btn" id="nextBtn" aria-label="Next line"><svg><use href="#i-next"/></svg></button>
+          </div>
+          <div class="host-avatar b" id="avatarB"><span class="ring"></span><span class="initial"></span><span class="name"></span></div>
+        </div>
+
+        <div class="timeline">
+          <div class="segments" id="segments"></div>
+          <div class="timeline-meta">
+            <span id="lineCounter">0 / 0</span>
+            <span class="timeline-actions">
+              <button class="pill-btn" id="speedBtn" aria-label="Playback speed">1×</button>
+              <button class="pill-btn" id="downloadBtn"><svg><use href="#i-download"/></svg><span>Download</span></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="subs-bar">
+          <span class="subs-label">Subtitles</span>
+          <div class="segmented compact" id="subsSeg" role="radiogroup" aria-label="Subtitles">
+            <button role="radio" data-sub="off" aria-checked="true">Off</button>
+            <button role="radio" data-sub="roman" aria-checked="false">Romanised</button>
+            <button role="radio" data-sub="translate" aria-checked="false">Translate</button>
+          </div>
+          <select id="subsLang" aria-label="Subtitle language" hidden></select>
+        </div>
+
+        <ol class="transcript" id="transcript" aria-live="off"></ol>
+
+        <div class="hand-dock" id="handDock">
+          <button class="hand-btn" id="handBtn"><svg><use href="#i-hand"/></svg><span id="handLabel">Raise hand</span></button>
+          <form class="ask-form" id="askForm">
+            <input type="text" id="askInput" placeholder="…or type a question, in any language" autocomplete="off">
+            <button class="icon-btn" type="submit" aria-label="Ask"><svg><use href="#i-send"/></svg></button>
+          </form>
+          <div class="hand-status" id="handStatus" hidden></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─────────────────────────────── UNDER THE HOOD ─────────────────────────────── -->
+  <section class="stack" id="stack" aria-labelledby="stackTitle">
+    <div class="stack-head">
+      <h2 id="stackTitle">Under the hood</h2>
+      <p>Every Sarvam model Charcha uses, lighting up as it works.</p>
+    </div>
+    <div class="stack-grid" id="stackGrid"></div>
+    <details class="activity" open>
+      <summary>Live activity</summary>
+      <ol id="activityLog"><li class="muted">Calls to Sarvam will show up here.</li></ol>
+    </details>
+  </section>
+
+  <footer class="foot">Built on <a href="https://www.sarvam.ai" target="_blank" rel="noopener">Sarvam AI</a> for the Sarvam campus build-a-thon · Keyboard: <kbd>Space</kbd> play/pause · <kbd>←</kbd><kbd>→</kbd> skip · <kbd>H</kbd> raise hand</footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
