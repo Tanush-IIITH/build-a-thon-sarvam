@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: charcha
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/config
+    envVars:
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        value: "22"
